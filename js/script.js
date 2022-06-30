@@ -30,17 +30,19 @@ Aggiungere una select accanto al bottone di generazione, che fornisca una scelta
 // Variabili di partenza
 
 const square = document.getElementById('square');
+const btnShow = document.getElementById('show');
 
 // Genero le mie celle con JS
 
 let rows = 10;
 let columns = 10;
-let grid = '';
 
-for(let i = 1; i <= rows; i++) {
-    for(let j = 1; j <= columns; j++) {
-        const cell = document.createElement('div');
-        cell.className = 'cell';
-        square.appendChild(cell);
+btnShow.addEventListener('click', () => {
+    for(i = 1; i <= rows; i++) {
+        for(let j = 1; j <= columns; j++) {
+            const cell = document.createElement('div');
+            cell.className = 'cell';
+            square.appendChild(cell);
+        }
     }
-}
+})
