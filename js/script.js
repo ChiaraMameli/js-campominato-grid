@@ -44,12 +44,21 @@ const btnShow = document.getElementById('show');
 
 let rows = 10;
 let columns = 10;
+let cell;
 
-btnShow.addEventListener('click', () => {
+btnShow.addEventListener('click', function () {
     for(i = 1; i <= (rows * columns); i++) {
         cell = document.createElement('div');
         cell.className = 'cell';
         cell.append(createNumbers(1, 100))
-        square.appendChild(cell);        
+
+        // Al click la cella cambia colore
+        cell.addEventListener('click', function() {
+            this.classList.toggle('clicked');
+        })
+
+        square.appendChild(cell); 
     }
 })
+
+
