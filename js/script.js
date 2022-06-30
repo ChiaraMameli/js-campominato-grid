@@ -27,3 +27,20 @@ Aggiungere una select accanto al bottone di generazione, che fornisca una scelta
 - con difficoltà 3 => 49 caselle, con un numero compreso tra 1 e 49, divise in 7 caselle per 7 righe;
 */
 
+// Variabili di partenza
+
+const square = document.getElementById('square');
+
+// Genero le mie celle con JS
+
+let rows = 10;
+let columns = 10;
+let grid = '';
+
+for(let i = 1; i <= rows; i++) {
+    for(let j = 1; j <= columns; j++) {
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        square.appendChild(cell);
+    }
+}
