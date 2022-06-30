@@ -27,22 +27,29 @@ Aggiungere una select accanto al bottone di generazione, che fornisca una scelta
 - con difficoltà 3 => 49 caselle, con un numero compreso tra 1 e 49, divise in 7 caselle per 7 righe;
 */
 
+// Genero le mie funzioni
+
+const createNumbers = (min, max) => {
+    let num = parseInt(0);
+    for(let i = min; i <= max; i++);
+    return num += parseInt(i)
+}
+
 // Variabili di partenza
 
 const square = document.getElementById('square');
 const btnShow = document.getElementById('show');
 
-// Genero le mie celle con JS
+// Genero le mie celle con JS e le numero
 
 let rows = 10;
 let columns = 10;
 
 btnShow.addEventListener('click', () => {
-    for(i = 1; i <= rows; i++) {
-        for(let j = 1; j <= columns; j++) {
-            const cell = document.createElement('div');
-            cell.className = 'cell';
-            square.appendChild(cell);
-        }
+    for(i = 1; i <= (rows * columns); i++) {
+        cell = document.createElement('div');
+        cell.className = 'cell';
+        cell.append(createNumbers(1, 100))
+        square.appendChild(cell);        
     }
 })
