@@ -1,0 +1,29 @@
+/* HEADER */
+header {
+    height: 80px;
+
+}
+
+header h1 {
+    line-height: 80px;
+}
+
+/* MAIN */
+main {
+    background-color: #ca9cf6;
+    min-height: calc(100vh - 80px);
+    padding: 50px;
+}
+
+#square {
+    height: 600px;
+    width: 600px;
+    margin: 0 auto;
+}
+
+.cell {
+    height: calc(600px / 10);
+    width: calc(600px / 10);
+    background-color: #C1C3C9;
+    border: 1px solid #ADAFB4;
+}
