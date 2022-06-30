@@ -35,20 +35,9 @@ const createNumbers = (min, max) => {
     return num += parseInt(i)
 }
 
-// Variabili di partenza
-
-const square = document.getElementById('square');
-const btnShow = document.getElementById('show');
-
-// Genero le mie celle con JS e le numero
-
-let rows = 10;
-let columns = 10;
-let cell;
-
-btnShow.addEventListener('click', function () {
+const createCell = (rows, columns) => {
     for(i = 1; i <= (rows * columns); i++) {
-        cell = document.createElement('div');
+        const cell = document.createElement('div');
         cell.className = 'cell';
         cell.append(createNumbers(1, 100))
 
@@ -59,6 +48,19 @@ btnShow.addEventListener('click', function () {
 
         square.appendChild(cell); 
     }
+}
+
+// Variabili di partenza
+
+const square = document.getElementById('square');
+const btnShow = document.getElementById('show');
+const select = document.getElementById('select');
+const option = document.querySelectorAll('option');
+
+// Genero le mie celle con JS e le numero
+
+btnShow.addEventListener('click', function () {
+     createCell(10, 10);
 })
 
 
