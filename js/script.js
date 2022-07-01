@@ -1,66 +1,57 @@
-/*
-Consegna
-L'utente clicca su un bottone che genererà una griglia di gioco quadrata.
-Ogni cella ha un numero progressivo, da 1 a 100.
-Ci saranno quindi 10 caselle per ognuna delle 10 righe.
-Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata.
-Procediamo milestone per milestone senza invertire l'ordine.
-Cerchiamo di fare almeno un commit per ogni milestone!
+//* Genero la  funzione play
+const play = () => {
+    // Svuoto la griglia
+    square.innerHTML = '';
 
-# MILESTONE 1
-Prepariamo l'HTML ed il CSS per ottenere il risultato grafico che vediamo nell'immagine allegata.
+    // Gestisco la select
+    const option = document.getElementById('select').value;
+    let rows = 10;
+    let columns = 10;
 
-#MILESTONE 2
-Rimuoviamo le celle che abbiamo inserito nell'HTML in modo da generarle tramite JS. 
-Al click del bottone play, vengono generate 100 celle in 10 righe da 10 celle ciascuna.
+    if(option === 'medium') {
+        rows = 9;
+        columns = 9;
+    } else if(option === 'hard') {
+        rows = 7;
+        columns = 7;
+    }
 
-#MILESTONE 3
-In ogni cella, deve comparire il numero corrispondente, in ordine da 1 a 100;
+    const totalCells = (rows * columns)
 
-#MILESTONE 4
-Al click sulla cella, stampiamo il numero della cella cliccata in console, poi coloriamo la cella d'azzurro!
-
-# BONUS
-Aggiungere una select accanto al bottone di generazione, che fornisca una scelta tra tre diversi livelli di difficoltà:
-- con difficoltà 1 => 100 caselle, con un numero compreso tra 1 e 100, divise in 10 caselle per 10 righe;
-- con difficoltà 2 => 81 caselle, con un numero compreso tra 1 e 81, divise in 9 caselle per 9 righe;
-- con difficoltà 3 => 49 caselle, con un numero compreso tra 1 e 49, divise in 7 caselle per 7 righe;
-*/
-
-// Genero le mie funzioni
-
-const createNumbers = (min, max) => {
-    let num = parseInt(0);
-    for(let i = min; i <= max; i++);
-    return num += parseInt(i)
-}
-
-const createCell = (rows, columns) => {
-    for(i = 1; i <= (rows * columns); i++) {
+    // Creo le mie celle
+    const createCells = (cellNumber) => {
         const cell = document.createElement('div');
         cell.className = 'cell';
-        cell.append(createNumbers(1, 100))
+        cell.innerText = cellNumber;
 
-        // Al click la cella cambia colore
-        cell.addEventListener('click', function() {
-            this.classList.toggle('clicked');
+        cell.style.height = `calc(100% / ${rows})`;
+        cell.style.width = `calc(100% / ${columns})`;
+
+        return cell
+    }
+    
+    // Inserisco le celle nella griglia
+    for(i = 1; i <= (totalCells); i++) {
+        const cell = createCells(i);
+
+        // Al click la cella cambia colore e il suo valore viene letto in console
+        cell.addEventListener('click', function(){
+            if(this.classList.contains('clicked')) return
+            this.classList.add('clicked');
+            console.log(this.innerText);
         })
 
-        square.appendChild(cell); 
+        square.append(cell)
     }
-}
+} 
 
 // Variabili di partenza
 
 const square = document.getElementById('square');
 const btnShow = document.getElementById('show');
-const select = document.getElementById('select');
-const option = document.querySelectorAll('option');
+const select = document.getElementById('option');
 
-// Genero le mie celle con JS e le numero
-
-btnShow.addEventListener('click', function () {
-     createCell(10, 10);
-})
+// Premendo il bottone faccio girare il programma
+btnShow.addEventListener('click', play);
 
 

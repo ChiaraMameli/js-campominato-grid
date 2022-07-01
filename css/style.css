@@ -25,8 +25,6 @@ main {
 }
 
 .cell {
-    height: calc(600px / 10);
-    width: calc(600px / 10);
     background-color: #C1C3C9;
     border: 1px solid #ADAFB4;
     display: flex;
